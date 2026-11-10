@@ -8,5 +8,5 @@
     "esModuleInterop": true,
     "skipLibCheck": true
   },
-  "include": ["src"]
+  "include": ["src"] // Incluye todos los archivos TypeScript en la carpeta src para ser compilados
 }

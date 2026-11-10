@@ -41,7 +41,7 @@ const validarTarea = (data: any): ITask => {
   return { titulo: titulo.trim(), prioridad, fechaLimite: fecha, completada };
 };
 
-export const taskService = {
+export const taskService = { // Capa de servicio: acá viven las validaciones de negocio
   getAll: () => taskRepository.findAll(),
 
   getById: async (id: string) => {
@@ -60,7 +60,7 @@ export const taskService = {
     return task;
   },
 
-  remove: async (id: string) => {
+  remove: async (id: string) => { // Función asíncrona para eliminar una tarea por su ID
     validarId(id);
     const task = await taskRepository.delete(id);
     if (!task) throw new AppError("Tarea no encontrada", 404);

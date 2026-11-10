@@ -12,7 +12,7 @@ const manejarError = (error: unknown, res: Response): void => {
   res.status(500).json({ message: "Error interno del servidor" });
 };
 
-export const taskController = {
+export const taskController = { // Controlador para las operaciones CRUD de tareas
   getAll: async (_req: Request, res: Response): Promise<void> => {
     try {
       const tasks = await taskService.getAll();
@@ -22,7 +22,8 @@ export const taskController = {
     }
   },
 
-  getById: async (req: Request, res: Response): Promise<void> => {
+  getById: async (req: Request, res: Response): Promise<void> => { // Función asíncrona para 
+  // obtener una tarea por su ID
     try {
       const task = await taskService.getById(req.params.id);
       res.status(200).json(task);
@@ -31,7 +32,7 @@ export const taskController = {
     }
   },
 
-  create: async (req: Request, res: Response): Promise<void> => {
+  create: async (req: Request, res: Response): Promise<void> => { // Función asíncrona para crear una nueva tarea
     try {
       const task = await taskService.create(req.body);
       res.status(201).json(task);
@@ -40,7 +41,7 @@ export const taskController = {
     }
   },
 
-  update: async (req: Request, res: Response): Promise<void> => {
+  update: async (req: Request, res: Response): Promise<void> => { // Función asíncrona para actualizar una tarea existente
     try {
       const task = await taskService.update(req.params.id, req.body);
       res.status(200).json(task);
@@ -49,7 +50,7 @@ export const taskController = {
     }
   },
 
-  remove: async (req: Request, res: Response): Promise<void> => {
+  remove: async (req: Request, res: Response): Promise<void> => { // Función asíncrona para eliminar una tarea por su ID
     try {
       await taskService.remove(req.params.id);
       res.status(200).json({ message: "Tarea eliminada correctamente" });

@@ -1,4 +1,4 @@
-import { Schema, model } from "mongoose";
+import { Schema, model } from "mongoose"; // Importa Schema y model de Mongoose para definir el esquema y el modelo de la tarea
 
 export const PRIORIDADES = ["baja", "media", "alta"] as const;
 export type Prioridad = (typeof PRIORIDADES)[number];
@@ -10,7 +10,7 @@ export interface ITask {
   completada: boolean;
 }
 
-const taskSchema = new Schema<ITask>(
+const taskSchema = new Schema<ITask>( // Define el esquema de la tarea con sus propiedades y validaciones
   {
     titulo: { type: String, required: true, trim: true },
     prioridad: { type: String, enum: PRIORIDADES, default: "media" },
