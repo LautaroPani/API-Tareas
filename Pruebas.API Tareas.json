@@ -1,0 +1,240 @@
+{
+    "info": {
+        "_postman_id": "abb7fe73-e5d3-41e5-8589-d15c4edfb576",
+        "name": "API Tareas",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+        "description": ""
+    },
+    "item": [
+        {
+            "name": "Craer Tareas del Hogar",
+            "request": {
+                "method": "POST",
+                "url": {
+                    "raw": "http://localhost:3000/api/tasks",
+                    "path": [
+                        "api",
+                        "tasks"
+                    ],
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "3000"
+                },
+                "body": {
+                    "mode": "raw",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    },
+                    "raw": "{\r\n  \"titulo\": \"Lavar los platos\",\r\n  \"descripcion\": \"Lavar toda la vajilla acumulada del almuerzo y limpiar la mesada\",\r\n  \"completada\": false,\r\n  \"fechaLimite\": \"2026-11-11\"\r\n}"
+                }
+            }
+        },
+        {
+            "name": "Listar Tareas",
+            "request": {
+                "method": "GET",
+                "url": {
+                    "raw": "http://localhost:3000/api/tasks",
+                    "path": [
+                        "api",
+                        "tasks"
+                    ],
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "3000"
+                }
+            }
+        },
+        {
+            "name": "Buscar por ID específico",
+            "request": {
+                "method": "GET",
+                "url": {
+                    "raw": "http://localhost:3000/api/tasks/6af27ba366156a9539641824",
+                    "path": [
+                        "api",
+                        "tasks",
+                        "6af27ba366156a9539641824"
+                    ],
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "3000"
+                }
+            }
+        },
+        {
+            "name": "Actualizar tarea",
+            "request": {
+                "method": "PUT",
+                "url": {
+                    "raw": "http://localhost:3000/api/tasks/6af27ba366156a9539641824",
+                    "path": [
+                        "api",
+                        "tasks",
+                        "6af27ba366156a9539641824"
+                    ],
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "3000"
+                },
+                "body": {
+                    "mode": "raw",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    },
+                    "raw": "{\r\n  \"titulo\": \"Lavar los platos\",\r\n  \"descripcion\": \"Lavar toda la vajilla acumulada del almuerzo y limpiar la mesada\",\r\n  \"completada\": true,\r\n  \"fechaLimite\": \"2026-11-11\"\r\n}"
+                }
+            }
+        },
+        {
+            "name": " POST sin título (error 400)",
+            "request": {
+                "method": "POST",
+                "url": {
+                    "raw": "http://localhost:3000/api/tasks",
+                    "path": [
+                        "api",
+                        "tasks"
+                    ],
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "3000"
+                },
+                "body": {
+                    "mode": "raw",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    },
+                    "raw": "{\r\n  \"descripcion\": \"Intentando crear tarea sin título\",\r\n  \"completada\": false,\r\n  \"fechaLimite\": \"2026-11-11\"\r\n}"
+                }
+            }
+        },
+        {
+            "name": "POST con prioridad urgente (400)",
+            "request": {
+                "method": "POST",
+                "url": {
+                    "raw": "http://localhost:3000/api/tasks",
+                    "path": [
+                        "api",
+                        "tasks"
+                    ],
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "3000"
+                },
+                "body": {
+                    "mode": "raw",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    },
+                    "raw": "{\r\n  \"titulo\": \"Tarea con error de prioridad\",\r\n  \"prioridad\": \"urgente\",\r\n  \"fechaLimite\": \"2026-12-31\"\r\n}"
+                }
+            }
+        },
+        {
+            "name": "POST con una fecha límite pasada (400)",
+            "request": {
+                "method": "POST",
+                "url": {
+                    "raw": "http://localhost:3000/api/tasks",
+                    "path": [
+                        "api",
+                        "tasks"
+                    ],
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "3000"
+                },
+                "body": {
+                    "mode": "raw",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    },
+                    "raw": "{\r\n  \"titulo\": \"Tarea en el pasado\",\r\n  \"fechaLimite\": \"2020-01-01\"\r\n}"
+                }
+            }
+        },
+        {
+            "name": "ID mal formado",
+            "request": {
+                "method": "GET",
+                "url": {
+                    "raw": "http://localhost:3000/api/tasks/123",
+                    "path": [
+                        "api",
+                        "tasks",
+                        "123"
+                    ],
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "3000"
+                }
+            }
+        },
+        {
+            "name": "GET con un ID válido que no existe",
+            "request": {
+                "method": "GET",
+                "url": {
+                    "raw": "http://localhost:3000/api/tasks/673f8a1b2c3d4e5f6a7b8c99",
+                    "path": [
+                        "api",
+                        "tasks",
+                        "673f8a1b2c3d4e5f6a7b8c99"
+                    ],
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "3000"
+                }
+            }
+        },
+        {
+            "name": "Eliminar la tarea",
+            "request": {
+                "method": "DELETE",
+                "url": {
+                    "raw": "http://localhost:3000/api/tasks/6af27ba366156a9539641824",
+                    "path": [
+                        "api",
+                        "tasks",
+                        "6af27ba366156a9539641824"
+                    ],
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "3000"
+                }
+            }
+        }
+    ]
+}
